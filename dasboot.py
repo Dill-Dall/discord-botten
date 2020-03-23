@@ -75,6 +75,13 @@ def addPoint(name):
             if(p["name"] == name):
                 p["score"] = str(int(p["score"]) + 1)
                 json.dump(SCORECARD, file, indent=4)
+                return
+        player = {}
+        player["name"] = name
+        player["score"] = 1
+        player["id"]= SCORECARD[len(SCORECARD)-1]["id"] + 1
+        SCORECARD.append(player)
+        json.dump(SCORECARD, file, indent=4)    
     
     
 
@@ -86,7 +93,7 @@ async def quiz_me(ctx):
         reply = await bot.wait_for('message', check=check(ctx.author), timeout=30)
         if(testContent(reply.content, quoteObject['said_by'])): 
             addPoint(ctx.author.name)
-            await ctx.send(sWrap(f'{reply.content}" is correctomundo!\nIt was said in which {quoteObject["genre"]}?',StringStyle.YELLOW))
+            await ctx.send(sWrap(f'{reply.content} is correctomundo!\nIt was said in which {quoteObject["genre"]}?',StringStyle.YELLOW))
 
         else: await ctx.send(sWrap(f'-{reply.content} is FAIL!\nBut, can you name the {quoteObject["genre"]}?' , StringStyle.DIFF))
     
@@ -156,7 +163,8 @@ async def score(ctx):
             leader = player["name"]
             leaderScore = int(player["score"])
 
-    await ctx.send(sWrap(f'{response}#\n#\n#   Guild quiz master is {leader}! with {leaderScore} points! Cheers!\n#\n######################################################', StringStyle.YELLOW)) 
+    await ctx.send(sWrap(f'{response}#\n#\n#   Guild quiz master is {leader}! with {leaderScore} points! Cheers!\n#'+
+    '\n########################################################', StringStyle.YELLOW)) 
 
 
 
