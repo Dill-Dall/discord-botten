@@ -1,0 +1,226 @@
+[
+    {
+        "quote": "We all make choices in life, but in the end our choices make us.",
+        "said_by": "Andrew Ryan",
+        "where": "Bioshock",
+        "genre": "game",
+        "id": 1
+    },
+    {
+        "quote": "Get over here!",
+        "said_by": "Scorpion",
+        "where": "Mortal Kombat",
+        "genre": "game",
+        "id": 2
+    },
+    {
+        "quote": "What is better? To be born good or to overcome your evil nature through great effort?",
+        "said_by": "Paarthurnax",
+        "where": "Paarthurnax, Elder Scrolls,Skyrim",
+        "genre": "game",
+        "id": 3
+    },
+    {
+        "quote": "It's time to kick ass and chew bubblegum... and I'm all outta gum.",
+        "said_by": "Duke Nukem",
+        "where": "Duke Nukem",
+        "genre": "game",
+        "id": 4
+    },
+    {
+        "quote": "It's easy to forget what a sin is in the middle of a battlefield.",
+        "said_by": "Solid Snake",
+        "where": "Metal Gear Solid",
+        "genre": "game",
+        "id": 5
+    },
+    {
+        "quote": "You know, being Caroline taught me a valuable lesson. I *thought* you were my greatest enemy, when all along you were my best friend.",
+        "said_by": "GLaDOS",
+        "where": "Portal 2",
+        "genre": "game",
+        "id": 6
+    },
+    {
+        "quote": "It\u2019s dangerous to go alone, take this!",
+        "said_by": "Old Man",
+        "where": "The Legend of Zelda",
+        "genre": "game",
+        "id": 7
+    },
+    {
+        "quote": "War. War never changes.",
+        "said_by": "",
+        "where": "Fallout",
+        "genre": "game",
+        "id": 8
+    },
+    {
+        "quote": "AAAAAAAAAAAAHHHRHGHHHGH thump",
+        "said_by": "Tarhiel",
+        "where": "Elder Scrolls, Morrowind",
+        "genre": "game",
+        "id": 9
+    },
+    {
+        "quote": "Stay awhile, and listen!",
+        "said_by": "Deckard Cain",
+        "where": "Diablo",
+        "genre": "game",
+        "id": 10
+    },
+    {
+        "quote": "Thank you Mario! But our Princess is in another castle!",
+        "said_by": "Toad",
+        "where": "Super Mario",
+        "genre": "game",
+        "id": 11
+    },
+    {
+        "quote": "Finish him!",
+        "said_by": "",
+        "where": "Mortal Kombat",
+        "genre": "game",
+        "id": 12
+    },
+    {
+        "quote": "Snake? Snake!? Snaaaaaaaaaaaaaaake!",
+        "said_by": "Colonel",
+        "where": "Metal Gear Solid",
+        "genre": "game",
+        "id": 13
+    },
+    {
+        "quote": "Hey! Listen!",
+        "said_by": "Na\u2019vi, Navi",
+        "where": "The Legend of Zelda, Ocarina of Time",
+        "genre": "game",
+        "id": 14
+    },
+    {
+        "quote": "I used to be an adventurer like you, until I took an arrow to the knee.",
+        "said_by": "Town Guard, Guard",
+        "where": "The Elder Scrolls,Skyrim",
+        "genre": "game",
+        "id": 15
+    },
+    {
+        "quote": "It\u2019s super effective!",
+        "said_by": "",
+        "where": "Pokemon",
+        "genre": "game",
+        "id": 16
+    },
+    {
+        "quote": "Do a barrel roll!",
+        "said_by": "Peppy",
+        "where": "Star Fox",
+        "genre": "game",
+        "id": 17
+    },
+    {
+        "quote": "Tell me Bats. What are you really scared of?",
+        "said_by": "The Joker,Joker",
+        "where": "Batman,Arkham asylum",
+        "genre": "game",
+        "id": 18
+    },
+    {
+        "quote": "You are not a good person. You know that, right? Good people don't end up here.",
+        "said_by": "Glados",
+        "where": "Portal",
+        "genre": "game",
+        "id": 19
+    },
+    {
+        "quote": "Are you a boy or a girl?",
+        "said_by": "",
+        "where": "Pokemon",
+        "genre": "game",
+        "id": 20
+    },
+    {
+        "quote": "Praise the sun!",
+        "said_by": "Solaire",
+        "where": "Dark Souls",
+        "genre": "game",
+        "id": 21
+    },
+    {
+        "quote": "Do you like hurting other people?",
+        "said_by": "Richard",
+        "where": "Hotline Miami",
+        "genre": "game",
+        "id": 22
+    },
+    {
+        "quote": "This is my favorite store on the Citadel!",
+        "said_by": "Commander Shepard",
+        "where": "Mass Effect",
+        "genre": "game",
+        "id": 23
+    },
+    {
+        "quote": "Stop right there, criminal scum!",
+        "said_by": "Guard",
+        "where": "Elder Scrolls,Oblivion",
+        "genre": "game",
+        "id": 24
+    },
+    {
+        "quote": "You have died of dysentery",
+        "said_by": "",
+        "where": "Oregon Trail",
+        "genre": "game",
+        "id": 25
+    },
+    {
+        "quote": "I like shorts! They\u2019re comfy and easy to wear!",
+        "said_by": "",
+        "where": "Pokemon",
+        "genre": "game",
+        "id": 26
+    },
+    {
+        "quote": "Did I ever tell you the definition of insanity?",
+        "said_by": "Vaas",
+        "where": "Far Cry",
+        "genre": "game",
+        "id": 27
+    },
+    {
+        "quote": "Waka Waka Waka",
+        "said_by": "Pacman",
+        "where": "Pacman",
+        "genre": "game",
+        "id": 28
+    },
+    {
+        "quote": "NOTHING IS MORE BADASS THAN TREATING A WOMAN WITH RESPECT!",
+        "said_by": "Mr Torgue,Torgue",
+        "where": "Borderlands",
+        "genre": "game",
+        "id": 29
+    },
+    {
+        "quote": "I don\u2019t need a weapon; my friends are my power!",
+        "said_by": "Sora",
+        "where": "Kingdom Heats",
+        "genre": "game",
+        "id": 30
+    },
+    {
+        "quote": "Frostmourne hungers!",
+        "said_by": "Arthas",
+        "where": "Warcraft,Warcraft 3",
+        "genre": "game",
+        "id": 31
+    },
+    {
+        "quote": "Ha, Ha, Ha, Ha, Ha, Ha",
+        "said_by": "Tidus,Yuna",
+        "where": "Final Fantasy",
+        "genre": "game",
+        "id": 32
+    }
+]
