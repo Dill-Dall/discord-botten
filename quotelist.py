@@ -24,7 +24,7 @@ quoteObjectList = [
     quoteobject("I used to be an adventurer like you, until I took an arrow to the knee.", "Town Guard, Guard", "The Elder Scrolls,Skyrim"),
     quoteobject("It’s super effective!", "", "Pokemon"),
     quoteobject("Do a barrel roll!", "Peppy", "Star Fox"),
-    quoteobject("Tell me Bats. What are you really scared of?", "The Joker,Joker", "Batman"),
+    quoteobject("Tell me Bats. What are you really scared of?", "The Joker,Joker", "Batman,Arkham asylum"),
     quoteobject("You are not a good person. You know that, right? Good people don't end up here.", "Glados", "Portal"),
     quoteobject("Are you a boy or a girl?", "", "Pokemon"),
     quoteobject("Praise the sun!", "Solaire", "Dark Souls"),
