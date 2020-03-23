@@ -3,6 +3,7 @@ import os
 import random 
 import enum
 import discord
+import string
 import youtube_dl
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -21,31 +22,13 @@ class StringStyle(enum.Enum):
    DIFF="diff"
 
 
-@bot.command(name='99', help='Responds with a random quote from Brooklyn 99')
-async def nine_nine(ctx):
-    brooklyn_99_quotes = [
-        'I\'m the human form of the 💯 emoji.',
-        'Bingpot!',
-        '99!',
-        "“Sarge, with all due respect, I am gonna completely ignore everything you just said.” – Jake Peralta",
-        "“A place where everybody knows your name is hell. You’re describing hell.” – Rosa Diaz",
-        "“If I die, turn my tweets into a book.” – Gina Linetti",
-        "“Great, I’d like your $8-est bottle of wine, please.” – Jake Peralta",
-        "“Captain Wuntch. Good to see you. But if you’re here, who’s guarding Hades?” – Captain Holt",
-        "“Anyone over the age of six celebrating a birthday should go to hell.” – Rosa Diaz",
-        "“Jake, piece of advice: just give up. It’s the Boyle way. It’s why our family crest is a white flag.” – Charles Boyle",
-        (
-            'Cool. Cool cool cool cool cool cool cool, '
-            'no doubt no doubt no doubt no doubt.'
-        ),
-    ]
-
-    response = random.choice(brooklyn_99_quotes)
-    await ctx.send(response)
-
-
 def sWrap(string, stringStyle):
     return f""">>> ```{stringStyle.value}\n{string}```"""
+
+@bot.command(name='99', help='Responds with a random quote from Brooklyn 99')
+async def nine_nine(ctx):
+    response = random.choice(quotelist.brooklyn_99_quotes)
+    await ctx.send(response)
 
 @bot.event
 async def on_ready():
@@ -102,21 +85,36 @@ async def quiz_me(ctx):
         await ctx.send(f'{quoteObject.quote} {qNpcString} is from the game accepted[{quoteObject.game}]')
 
 
-@bot.command(name='roll', help='!roll 3d4 could give 3,1,2 = 6')
-async def roll(ctx, diceString):
-
-    dice = diceString.split("d")
 
 
-    dice = [
-        str(random.choice(range(1, int(dice[1])+ 1)))
-        for _ in range(int(dice[0]))
-    ]
 
-    sumOfDice = sum([int(i) for i in dice])
-    diceValues  = ', '.join(dice)
 
-    await ctx.send(f">>> {diceValues}={sumOfDice}")
+
+@bot.command(name='roll', help='!roll 3d4 could give 3,1,2 = 6.. !roll 2d20 +3d10, could give "18,17=35 : 8,1,6=15 :  = 50"')
+async def roll(ctx, *args):
+
+    diceString = ''.join(args)
+    dice = diceString.translate({ord(c): None for c in string.whitespace})
+
+    #[2d4,4d8]
+    diceSets = dice.split("+")
+    diceStrings = []
+    totalsum = 0
+    #[[2,4],[4,8]]
+    for set in diceSets:
+        set = set.split("d")
+        set = [ str(random.choice(range(1, int(set[1])+ 1))) for _ in range(int(set[0])) ]
+        sumOfDice = sum([int(i) for i in set])
+        totalsum += sumOfDice
+        diceValues = ','.join(set)
+        diceStrings.append(f'{diceValues}={sumOfDice}')
+
+    responseString=''
+    for s in diceStrings:
+        responseString += f'{s} : '
+
+    await ctx.send(f">>> {responseString} = {totalsum}")
+
 
 
 players = {}

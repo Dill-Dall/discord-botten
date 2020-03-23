@@ -40,3 +40,21 @@ quoteObjectList = [
     quoteobject("Frostmourne hungers!", "Arthas", "Warcraft,Warcraft 3"),
     quoteobject("Ha, Ha, Ha, Ha, Ha, Ha", "Tidus,Yuna", "Final Fantasy")
 ]   
+
+
+brooklyn_99_quotes = [
+    'I\'m the human form of the 💯 emoji.',
+    'Bingpot!',
+    '99!',
+    "“Sarge, with all due respect, I am gonna completely ignore everything you just said.” – Jake Peralta",
+    "“A place where everybody knows your name is hell. You’re describing hell.” – Rosa Diaz",
+    "“If I die, turn my tweets into a book.” – Gina Linetti",
+    "“Great, I’d like your $8-est bottle of wine, please.” – Jake Peralta",
+    "“Captain Wuntch. Good to see you. But if you’re here, who’s guarding Hades?” – Captain Holt",
+    "“Anyone over the age of six celebrating a birthday should go to hell.” – Rosa Diaz",
+    "“Jake, piece of advice: just give up. It’s the Boyle way. It’s why our family crest is a white flag.” – Charles Boyle",
+    (
+        'Cool. Cool cool cool cool cool cool cool, '
+        'no doubt no doubt no doubt no doubt.'
+    ),
+]
