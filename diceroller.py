@@ -10,12 +10,12 @@ async def roll(ctx, *args):
     diceStrings = []
     totalsum = 0
     #[[2,4],[4,8]]
-    for set in diceSets:
-        set = set.split("d")
-        set = [ str(random.choice(range(1, int(set[1])+ 1))) for _ in range(int(set[0])) ]
-        sumOfDice = sum([int(i) for i in set])
+    for dice_set in diceSets:
+        dice_set = dice_set.split("d")
+        dice_set = [str(random.choice(range(1, int(dice_set[1])+ 1))) for _ in range(int(dice_set[0]))]
+        sumOfDice = sum([int(i) for i in dice_set])
         totalsum += sumOfDice
-        diceValues = ','.join(set)
+        diceValues = ','.join(dice_set)
         diceStrings.append(f'{diceValues}={sumOfDice}')
 
     responseString=''
