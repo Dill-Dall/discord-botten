@@ -22,7 +22,7 @@ GUILD = os.getenv('DISCORD_GUILD')
 #SETUP
 @bot.event
 async def on_ready():
-    print(f'{bot.user.name} has connected to Discord!')
+    print(f'{bot.user.name} has connected to Discord!', flush=True)
 
 @bot.event
 async def on_member_join(member):
