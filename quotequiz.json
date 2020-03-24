@@ -58,7 +58,7 @@
     {
         "quote": "AAAAAAAAAAAAHHHRHGHHHGH thump",
         "said_by": "Tarhiel",
-        "where": "Elder Scrolls, Morrowind",
+        "where": "Elder Scrolls,Morrowind",
         "genre": "game",
         "id": 9
     },
@@ -92,14 +92,14 @@
     },
     {
         "quote": "Hey! Listen!",
-        "said_by": "Na\u2019vi, Navi",
+        "said_by": "Na\u2019vi,Navi",
         "where": "The Legend of Zelda, Ocarina of Time",
         "genre": "game",
         "id": 14
     },
     {
         "quote": "I used to be an adventurer like you, until I took an arrow to the knee.",
-        "said_by": "Town Guard, Guard",
+        "said_by": "Town Guard,Guard",
         "where": "The Elder Scrolls,Skyrim",
         "genre": "game",
         "id": 15
@@ -184,7 +184,7 @@
     {
         "quote": "Did I ever tell you the definition of insanity?",
         "said_by": "Vaas",
-        "where": "Far Cry",
+        "where": "Far Cry,Far Cry 3,FC3",
         "genre": "game",
         "id": 27
     },
@@ -222,5 +222,264 @@
         "where": "Final Fantasy",
         "genre": "game",
         "id": 32
+    },
+    {
+        "quote": "The right man in the wrong place can make all the difference in the world.",
+        "said_by": "G-Man,gman",
+        "where": "Half-Life 2,Half Life 2,HL2",
+        "genre": "game",
+        "id": 33
+    },
+    {
+        "quote": "Stand in the ashes of a trillion dead souls, and ask the ghosts if honor matters. The silence is your answer.",
+        "said_by": "Javik",
+        "where": "Mass Effect 3,ME3",
+        "genre": "game",
+        "id": 34
+    },
+    {
+        "quote": "Bring me a bucket, and I'll show you a bucket!",
+        "said_by": "Psycho",
+        "where": "Borderlands 2",
+        "genre": "game",
+        "id": 35
+    },
+    {
+        "quote": "Even in dark times, we cannot relinquish the things that make us human.",
+        "said_by": "Khan",
+        "where": "Metro 2033,Metro",
+        "genre": "game",
+        "id": 36
+    },
+    {
+        "quote": "A hero need not speak. When he is gone, the world will speak for him.",
+        "said_by": "",
+        "where": "Halo 3,Halo",
+        "genre": "game",
+        "id": 37
+    },
+    {
+        "quote": "No gods or kings. Only man.",
+        "said_by": "Andrew Ryan",
+        "where": "Bioshock",
+        "genre": "game",
+        "id": 38
+    },
+    {
+        "quote": "Some trees flourish, others die. Some cattle grow strong, others are taken by wolves. Some men are born rich enough and dumb enough to enjoy their lives. Ain't nothing fair.",
+        "said_by": "John Marston",
+        "where": "Red Dead Redemption,RDR",
+        "genre": "game",
+        "id": 39
+    },
+    {
+        "quote": "Trust me.",
+        "said_by": "BT-7274,BT",
+        "where": "Titanfall 2, TF2",
+        "genre": "game",
+        "id": 41
+    },
+    {
+        "quote": "Nothing is true, everything is permitted",
+        "said_by": "Ezio Auditore,Ezio",
+        "where": "Assassin's Creed 2,AC2",
+        "genre": "game",
+        "id": 42
+    },
+    {
+        "quote": "Good men mean well. We just don't always end up doing well.",
+        "said_by": "Isaac Clarke,Isaac",
+        "where": "Dead Space 3,DS3",
+        "genre": "game",
+        "id": 43
+    },
+    {
+        "quote": "Endure and survive.",
+        "said_by": "Ellie",
+        "where": "The Last of Us",
+        "genre": "game",
+        "id": 44
+    },
+    {
+        "quote": "Protocol one: link to Pilot. Protocol two: uphold the mission. Protocol three: protect the Pilot.",
+        "said_by": "BT-7274,BT",
+        "where": "Titanfall 2,TF2",
+        "genre": "game",
+        "id": 45
+    },
+    {
+        "quote": "You are here, and it's beautiful, and escaping isn't always something bad.",
+        "said_by": "Delilah",
+        "where": "Firewatch",
+        "genre": "game",
+        "id": 46
+    },
+    {
+        "quote": "A man chooses; a slave obeys.",
+        "said_by": "Andrew Ryan",
+        "where": "Bioshock",
+        "genre": "game",
+        "id": 47
+    },
+    {
+        "quote": "We both said a lot of things that you're going to regret. But I think we can put our differences behind us. For science. You monster.",
+        "said_by": "Glados",
+        "where": "Portal 2",
+        "genre": "game",
+        "id": 48
+    },
+    {
+        "quote": "The Kid just rages for a while.",
+        "said_by": "Narrator",
+        "where": "Bastion",
+        "genre": "game",
+        "id": 49
+    },
+    {
+        "quote": "Space. Space. I'm in soace. SPAAAAAAACE!",
+        "said_by": "Space Core",
+        "where": "Portal 2",
+        "genre": "game",
+        "id": 50
+    },
+    {
+        "quote": "No matter how darkt he night, morning always comes, and our journey begins anew",
+        "said_by": "Lulu",
+        "where": "Final Fantasy X,FFX,FF10,FF:X,FF:10",
+        "genre": "game",
+        "id": 51
+    },
+    {
+        "quote": "Hope is what makes us strong. It is why we are here. It is what we fight with when all else is lost.",
+        "said_by": "Pandora",
+        "where": "God of War 3, GOW 3, GOW3",
+        "genre": "game",
+        "id": 52
+    },
+    {
+        "quote": "Science isn't about why! It's about why not!",
+        "said_by": "Cave Johnson",
+        "where": "Portal 2",
+        "genre": "game",
+        "id": 53
+    },
+    {
+        "quote": "Hard to see big picture behind pile of corpses.",
+        "said_by": "Mordin,Mordin Solus",
+        "where": "Mass Effect 3,ME3, ME 3",
+        "genre": "game",
+        "id": 54
+    },
+    {
+        "quote": "Does this unit have a soul?",
+        "said_by": "Legion",
+        "where": "Mass Effect 3,ME3,ME 3",
+        "genre": "game",
+        "id": 55
+    },
+    {
+        "quote": "You are not a good person. You know that, right? Good people don't end up here.",
+        "said_by": "Glados",
+        "where": "Portal 2",
+        "genre": "game",
+        "id": 56
+    },
+    {
+        "quote": "War is where the young and stupid are tricked by the old and bitter into killing each other.",
+        "said_by": "Niko Bellic,Niko",
+        "where": "GTA IV,GTA4,GTA 4,Grand Theft Auto IV,Grand Theft Auto 4",
+        "genre": "game",
+        "id": 57
+    },
+    {
+        "quote": "When life gives you lemons, don't make lemonade. Make life take the lemons back!",
+        "said_by": "Cave Johnson",
+        "where": "Portal 2",
+        "genre": "game",
+        "id": 58
+    },
+    {
+        "quote": "YOU DIED",
+        "said_by": "",
+        "where": "Dark Souls",
+        "genre": "game ",
+        "id": 59
+    },
+    {
+        "quote": "I've struggled a long time with survivin', but no matter what you have to find something to fight for.",
+        "said_by": "Joel",
+        "where": "The Last of Us",
+        "genre": "game",
+        "id": 60
+    },
+    {
+        "quote": "Don't make a girl a promise if you know you can't keep it.",
+        "said_by": "Cortana",
+        "where": "Halo 3",
+        "genre": "game",
+        "id": 61
+    },
+    {
+        "quote": "You can't break a man the way you do a dog or a horse. The harder you beat a mna, the taller he stands.",
+        "said_by": "The Jackal,Jackal",
+        "where": "Far Cry 2,FC2,FC 2",
+        "genre": "game",
+        "id": 62
+    },
+    {
+        "quote": "Drinking alone's as bad as shitting in company.",
+        "said_by": "Zoltan,Zoltan Chivay",
+        "where": "The Witcher 2: Assassins of Kings,The Witcher 2,Witcher 2",
+        "genre": "game",
+        "id": 63
+    },
+    {
+        "quote": "Be wise. Be safe. Be aware.",
+        "said_by": "Dr Wallace Breen,Wallace Breen,Breen",
+        "where": "Half-Life 2,Half Life 2,HL2",
+        "genre": "game",
+        "id": 64
+    },
+    {
+        "quote": "A famous explorer once said, that the extraordinary is in what we do, not who we are.",
+        "said_by": "Lara Croft",
+        "where": "Tomb Raider",
+        "genre": "game",
+        "id": 65
+    },
+    {
+        "quote": "Heroes never die.",
+        "said_by": "Mercy",
+        "where": "Overwatch",
+        "genre": "game",
+        "id": 66
+    },
+    {
+        "quote": "Grant us eyes, grant us eyes. Plant eyes on our brains, to cleans our beastly idiocy.",
+        "said_by": "Micolash",
+        "where": "Bloodborne",
+        "genre": "game",
+        "id": 67
+    },
+    {
+        "quote": "Just go out and kill a few beasts. It's for your own good.",
+        "said_by": "Gehrman",
+        "where": "Bloodborne",
+        "genre": "game",
+        "id": 68
+    },
+    {
+        "quote": "Farewell, good hunter. May you find your worth in the waking world.",
+        "said_by": "Plain Doll,Doll",
+        "where": "Bloodborne",
+        "genre": "game",
+        "id": 69
+    },
+    {
+        "quote": "A hunter must hunt.",
+        "said_by": "Eileen the Crow,Eileen",
+        "where": "Bloodborne",
+        "genre": "game",
+        "id": 70
     }
 ]
