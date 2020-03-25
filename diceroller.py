@@ -1,3 +1,6 @@
+"""
+    Module to handle rolling of dice
+"""
 import string
 import random
 
@@ -24,4 +27,4 @@ async def roll(ctx, *args):
 
     await ctx.send(f">>> {response_string} = {totalsum}")
 
-players = {}
+players = {} # why is this here?

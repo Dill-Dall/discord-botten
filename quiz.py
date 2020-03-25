@@ -1,3 +1,7 @@
+"""
+Module to handle stuff related to quiz
+"""
+
 import json
 import random
 
@@ -8,40 +12,39 @@ with open("quotequiz.json", "r") as file:
     QUOTELIST = json.load(file)
 
 with open("score.json", "r") as file:
-    SCORECARD = json.load(file)    
+    SCORECARD = json.load(file)
 
-def addPoint(name):
+def add_point(name):
     with open("score.json", "w") as file:
-        for p in SCORECARD:
-            if(p["name"] == name):
-                p["score"] = str(int(p["score"]) + 1)
+        for player in SCORECARD:
+            if player["name"] == name:
+                player["score"] = str(int(player["score"]) + 1)
                 json.dump(SCORECARD, file, indent=4)
                 return
-        player = {}
-        player["name"] = name
-        player["score"] = 1
-        player["id"]= SCORECARD[len(SCORECARD)-1]["id"] + 1
-        SCORECARD.append(player)
+        new_player = {}
+        new_player["name"] = name
+        new_player["score"] = 1
+        new_player["id"]= SCORECARD[len(SCORECARD)-1]["id"] + 1
+        SCORECARD.append(new_player)
         json.dump(SCORECARD, file, indent=4)    
-    
 
 async def quiz_me(bot,ctx):
-    quoteObject = random.choice(QUOTELIST)
-    if(quoteObject["said_by"] != ""):
-        await ctx.send(util.sWrap(f'{ctx.author.name}: The quote: “{quoteObject["quote"]}”\nWas said by?', util.StringStyle.CYAN))
+    quote_object = random.choice(QUOTELIST)
+    if(quote_object["said_by"] != ""):
+        await ctx.send(util.sWrap(f'{ctx.author.name}: The quote: “{quote_object["quote"]}”\nWas said by?', util.StringStyle.CYAN))
         reply = await bot.wait_for('message', check=util.check(ctx.author), timeout=30)
-        if(util.testContent(reply.content, quoteObject['said_by'])): 
-            addPoint(ctx.author.name)
-            await ctx.send(util.sWrap(f'{reply.content} is correctomundo!\nIt was said in which {quoteObject["genre"]}?',util.StringStyle.YELLOW))
+        if(util.testContent(reply.content, quote_object['said_by'])):
+            add_point(ctx.author.name)
+            await ctx.send(util.sWrap(f'{reply.content} is correctomundo!\nIt was said in which {quote_object["genre"]}?',util.StringStyle.YELLOW))
 
-        else: await ctx.send(util.sWrap(f'-{reply.content} is FAIL!\nBut, can you name the {quoteObject["genre"]}?' , util.StringStyle.DIFF))
+        else: await ctx.send(util.sWrap(f'-{reply.content} is FAIL!\nBut, can you name the {quote_object["genre"]}?' , util.StringStyle.DIFF))
     
     else:
-        await ctx.send(util.sWrap(f'{ctx.author.name}: The quote: “{quoteObject["quote"]}”\nWas said in which {quoteObject["genre"]}?', util.StringStyle.CYAN))
+        await ctx.send(util.sWrap(f'{ctx.author.name}: The quote: “{quote_object["quote"]}”\nWas said in which {quote_object["genre"]}?', util.StringStyle.CYAN))
 
     reply = await bot.wait_for('message', check=util.check(ctx.author), timeout=30)
-    if(util.testContent(reply.content, quoteObject["where"])): 
-        addPoint(ctx.author.name)
+    if(util.testContent(reply.content, quote_object["where"])): 
+        add_point(ctx.author.name)
         await ctx.send(util.sWrap(reply.content+" is correctomundo!",util.StringStyle.YELLOW))
     else: 
         await ctx.send(util.sWrap(f'-{reply.content} is FAIL!!!' , util.StringStyle.DIFF))
@@ -49,17 +52,17 @@ async def quiz_me(bot,ctx):
     
     reply = await bot.wait_for('message', check=util.check(ctx.author), timeout=30)
     if(reply.content == "answer".lower()): 
-        qNpcString = quoteObject["said_by"]
+        qNpcString = quote_object["said_by"]
         if(qNpcString != ""): qNpcString = f'was said by accepted[{qNpcString}] and'
-        await ctx.send(f'{quoteObject["quote"]} {qNpcString} is from the {quoteObject["genre"]} accepted[{quoteObject["where"]}]')
+        await ctx.send(f'{quote_object["quote"]} {qNpcString} is from the {quote_object["genre"]} accepted[{quote_object["where"]}]')
 
-async def addquiz(bot, ctx, quote, said_by, where, genre):
+async def add_quiz(bot, ctx, quote, said_by, where, genre):
     questions = {}
     questions["quote"] = quote
     questions["said_by"] = said_by
     questions["where"] = where
     questions["genre"] = genre
-    questions["id"]= QUOTELIST[len(QUOTELIST)-1]["id"] + 1       
+    questions["id"] = QUOTELIST[len(QUOTELIST)-1]["id"] + 1
     await ctx.send(util.sWrap(f'{ctx.author.name}: You have inserted  The quote: “{questions["quote"]}”\n'+
         f'said by: [{questions["said_by"]}]\n'+
         f'from: [{questions["where"]}]\n'+
@@ -72,18 +75,18 @@ async def addquiz(bot, ctx, quote, said_by, where, genre):
             json.dump(QUOTELIST, file, indent=4)
         await ctx.send(util.sWrap(f'Great! You have entered a new quizset with id = {questions["id"]}. Thank you {ctx.author.name}!', util.StringStyle.CYAN))
 
-async def delQuiz(ctx, id):
+async def del_quiz(ctx, quiz_id):
     if(ctx.author.name != "DillDall"):
         await ctx.send(util.sWrap(f'{ctx.author.name}! You forget yourself, such actions are beyond you. You are not the great DillDall!', util.StringStyle.CYAN))
         return
     with open("quotequiz.json", "w") as file:
         for quote in QUOTELIST: 
-            if(quote["id"] == int(id)):
+            if(quote["id"] == int(quiz_id)):
                 QUOTELIST.remove(quote)
-                await ctx.send(util.sWrap(f'You sucessfully deleted the quote with id = {id}', util.StringStyle.CYAN))
+                await ctx.send(util.sWrap(f'You sucessfully deleted the quote with id = {quiz_id}', util.StringStyle.CYAN))
                 json.dump(QUOTELIST, file, indent=4)
                 return
-    await ctx.send(util.sWrap(f'-Quote with id = {id} not found in Quotelist', util.StringStyle.NONE))
+    await ctx.send(util.sWrap(f'-Quote with id = {quiz_id} not found in Quotelist', util.StringStyle.NONE))
         
 
 async def score(ctx):
@@ -97,4 +100,4 @@ async def score(ctx):
             leaderScore = int(player["score"])
 
     await ctx.send(util.sWrap(f'{response}#\n#\n#   Guild quiz master is {leader}! with {leaderScore} points! Cheers!\n#'+
-    '\n########################################################', util.StringStyle.YELLOW)) 
+    '\n########################################################', util.StringStyle.YELLOW))
