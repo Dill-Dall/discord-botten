@@ -4,6 +4,7 @@ Module to handle stuff related to quiz
 
 import json
 import random
+import asyncio
 
 import util
 
@@ -28,30 +29,38 @@ def add_point(name):
         SCORECARD.append(new_player)
         json.dump(SCORECARD, file, indent=4)    
 
-async def quiz_me(bot,ctx):
+async def quiz_me(bot, ctx):
     quote_object = random.choice(QUOTELIST)
     if(quote_object["said_by"] != ""):
-        await ctx.send(util.sWrap(f'{ctx.author.name}: The quote: “{quote_object["quote"]}”\nWas said by?', util.StringStyle.CYAN))
-        reply = await bot.wait_for('message', check=util.check(ctx.author), timeout=30)
-        if(util.testContent(reply.content, quote_object['said_by'])):
-            add_point(ctx.author.name)
-            await ctx.send(util.sWrap(f'{reply.content} is correctomundo!\nIt was said in which {quote_object["genre"]}?',util.StringStyle.YELLOW))
+        await ctx.send(util.sWrap(f'{ctx.author.name}: The quote: “{quote_object["quote"]}” (id: {quote_object["id"]})\nWas said by?', util.StringStyle.CYAN))
+        try:
+            reply = await bot.wait_for('message', check=util.check(ctx.author), timeout=30)
+        except asyncio.TimeoutError:
+            await ctx.send(util.sWrap(f'You were too slow!\nBut, can you name the {quote_object["genre"]}?', util.StringStyle.DIFF))
+        else:
+            if(util.testContent(reply.content, quote_object['said_by'])):
+                add_point(ctx.author.name)
+                await ctx.send(util.sWrap(f'{reply.content} is correctomundo!\nIt was said in which {quote_object["genre"]}?',util.StringStyle.YELLOW))
 
-        else: await ctx.send(util.sWrap(f'-{reply.content} is FAIL!\nBut, can you name the {quote_object["genre"]}?' , util.StringStyle.DIFF))
+            else: await ctx.send(util.sWrap(f'-{reply.content} is FAIL!\nBut, can you name the {quote_object["genre"]}?' , util.StringStyle.DIFF))
     
     else:
-        await ctx.send(util.sWrap(f'{ctx.author.name}: The quote: “{quote_object["quote"]}”\nWas said in which {quote_object["genre"]}?', util.StringStyle.CYAN))
+        await ctx.send(util.sWrap(f'{ctx.author.name}: The quote: “{quote_object["quote"]}” (id: {quote_object["id"]})\nWas said in which {quote_object["genre"]}?', util.StringStyle.CYAN))
 
-    reply = await bot.wait_for('message', check=util.check(ctx.author), timeout=30)
-    if(util.testContent(reply.content, quote_object["where"])): 
-        add_point(ctx.author.name)
-        await ctx.send(util.sWrap(reply.content+" is correctomundo!",util.StringStyle.YELLOW))
-    else: 
-        await ctx.send(util.sWrap(f'-{reply.content} is FAIL!!!' , util.StringStyle.DIFF))
+    try:
+        reply = await bot.wait_for('message', check=util.check(ctx.author), timeout=30)
+    except asyncio.TimeoutError:
+        await ctx.send(util.sWrap("You were too slow, try again!", util.StringStyle.DIFF))
+    else:
+        if(util.testContent(reply.content, quote_object["where"])): 
+            add_point(ctx.author.name)
+            await ctx.send(util.sWrap(reply.content+" is correctomundo!",util.StringStyle.YELLOW))
+        else: 
+            await ctx.send(util.sWrap(f'-{reply.content} is FAIL!!!' , util.StringStyle.DIFF))
     
     
     reply = await bot.wait_for('message', check=util.check(ctx.author), timeout=30)
-    if(reply.content == "answer".lower()): 
+    if(reply.content == "answer".lower()):
         qNpcString = quote_object["said_by"]
         if(qNpcString != ""): qNpcString = f'was said by accepted[{qNpcString}] and'
         await ctx.send(f'{quote_object["quote"]} {qNpcString} is from the {quote_object["genre"]} accepted[{quote_object["where"]}]')
