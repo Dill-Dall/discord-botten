@@ -16,6 +16,7 @@ import quotelist
 
 # bot.py
 BOT = commands.Bot(command_prefix='!')
+BOT.add_cog(diceroller.Diceroller(BOT))
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -63,10 +64,6 @@ async def del_quiz(ctx, quiz_id):
 @BOT.command(name='score', help='Show scoreboard over quiz competitors')
 async def score(ctx):
     await quiz.score(ctx)
-
-@BOT.command(name='roll', help='!roll 3d4 could give 3,1,2 = 6.. !roll 2d20 +3d10, could give "18,17=35 : 8,1,6=15 :  = 50"')
-async def roll(ctx, *args):
-    await  diceroller.roll(ctx, *args)
 
 
 #TODO: MUSIC PLAYER
