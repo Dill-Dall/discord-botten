@@ -9,8 +9,8 @@ class Diceroller(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    # TODO 
-    # Update help text, possible make it a dosctring instead
+    # TODO Update help text
+    # Possibly make it a dosctring instead
     @commands.command(help='!roll 3d4 could give 3,1,2 = 6.. !roll 2d20 3d10, could give "18,17=35 : 8,1,6=15 :  = 50"')
     async def roll(self, ctx, *args):
         dice = args
