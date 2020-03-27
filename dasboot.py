@@ -12,13 +12,17 @@ from dotenv import load_dotenv
 
 import quiz
 import diceroller
+import music
+
 import quotelist
 import util
+
 
 # bot.py
 BOT = commands.Bot(command_prefix='!')
 BOT.add_cog(diceroller.Diceroller(BOT))
 BOT.add_cog(quiz.Quiz(BOT))
+BOT.add_cog(music.Music(BOT))
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -56,27 +60,6 @@ async def countdown(ctx, countdown):
     await util.timer(ctx, countdown)
 
 
-#TODO: MUSIC PLAYER
-PLAYERS = {}
 
-@BOT.command(pass_context=True)
-async def join(ctx):
-    if ctx.message.author.voice:
-        channel = ctx.message.author.voice.channel
-        await channel.connect()
-
-@BOT.command(pass_context=True)
-async def leave(ctx):
-    guild = ctx.message.guild
-    voice_client = guild.voice_client
-    await voice_client.disconnect()
-
-@BOT.command(pass_context=True)
-async def play(ctx, url):
-    guild = ctx.message.guild
-    voice_client = guild.voice_client
-    player = await voice_client.create_ytdl_player(url)
-    PLAYERS[server.id] = player
-    player.start()
 
 BOT.run(TOKEN)

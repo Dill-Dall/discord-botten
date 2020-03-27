@@ -29,9 +29,6 @@ from async_timeout import timeout
 from functools import partial
 from youtube_dl import YoutubeDL
 
-import os
-from dotenv import load_dotenv
-
 
 ytdlopts = {
     'format': 'bestaudio/best',
@@ -53,19 +50,6 @@ ffmpegopts = {
 }
 
 ytdl = YoutubeDL(ytdlopts)
-
-
-
-
-
-
-# bot.py
-BOT = commands.Bot(command_prefix='!')
-
-load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
-GUILD = os.getenv('DISCORD_GUILD')
-
 
 
 class VoiceConnectionError(commands.CommandError):
@@ -146,7 +130,6 @@ class MusicPlayer:
         self._channel = ctx.channel
         self._cog = ctx.cog
 
-        print("jlfkd")
         self.queue = asyncio.Queue()
         self.next = asyncio.Event()
 
@@ -203,7 +186,7 @@ class MusicPlayer:
         return self.bot.loop.create_task(self._cog.cleanup(guild))
 
 
-class MusicCog(commands.cog):
+class Music(commands.Cog):
     """Music related commands."""
 
     __slots__ = ('bot', 'players')
@@ -436,7 +419,3 @@ class MusicCog(commands.cog):
             return await ctx.send('I am not currently playing anything!', delete_after=20)
 
         await self.cleanup(ctx.guild)
-
-
-def setup(bot: commands.Bot):
-    bot.add_cog(MusicCog(bot))
