@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 import quiz
 import diceroller
 import quotelist
+import util
 
 # bot.py
 BOT = commands.Bot(command_prefix='!')
@@ -64,6 +65,11 @@ async def del_quiz(ctx, quiz_id):
 @BOT.command(name='score', help='Show scoreboard over quiz competitors')
 async def score(ctx):
     await quiz.score(ctx)
+
+
+@BOT.command(name='countdown', help='Show scoreboard over quiz competitors')
+async def countdown(ctx, countdown):
+    await util.timer(ctx, countdown)
 
 
 #TODO: MUSIC PLAYER

@@ -3,6 +3,8 @@ A set of utility functions
 """
 
 import enum
+import time
+import sys
 
 class StringStyle(enum.Enum):
     YELLOW = "fix"
@@ -24,3 +26,15 @@ def check(author):
     def inner_check(message):
         return message.author == author
     return inner_check
+
+async def timer(ctx, countdown):
+    msg = await ctx.send(f'Timer: {countdown}')
+
+    for remaining in range(int(countdown), 0, -1):
+        start_time = time.time()
+        await msg.edit(content=f'Timer: {remaining}')
+        current_time = time.time()
+        elapsed_time = current_time - start_time
+        if(1-elapsed_time  > 0):
+            time.sleep(1-elapsed_time)
+
