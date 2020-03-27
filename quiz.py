@@ -76,14 +76,12 @@ class Quiz(commands.Cog):
     @commands.command(name='addquiz', help='can create quizes. Insert four util.StringStyle for the  fields:quote, said_by, where, genre: example: !addquiz "A quote from a film" "The name of the actor" "the name of the  film" "genre"... \n'
                      + 'for multiple accepted answers you can write for said_by or where "dasBoot,das boot,das boots" These are then all accepted answers for the said_by field.')
     async def add_quiz(self, ctx, quote, said_by, where, genre):
-        print("started func", flush=True)
         questions = {}
         questions["quote"] = quote
         questions["said_by"] = said_by
         questions["where"] = where
         questions["genre"] = genre
         questions["id"] = QUOTELIST[len(QUOTELIST) - 1]["id"] + 1
-        print("added to dict", flush=True)
         await ctx.send(util.sWrap(f'{ctx.author.name}: You have inserted  The quote: “{questions["quote"]}”\n'
                                   + f'said by: [{questions["said_by"]}]\n'
                                   + f'from: [{questions["where"]}]\n'
