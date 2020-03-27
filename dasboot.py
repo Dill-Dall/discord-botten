@@ -18,6 +18,7 @@ import util
 # bot.py
 BOT = commands.Bot(command_prefix='!')
 BOT.add_cog(diceroller.Diceroller(BOT))
+BOT.add_cog(quiz.Quiz(BOT))
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -35,7 +36,6 @@ async def on_member_join(member):
         f'>>> Hi {member.name}, welcome to {GUILD}!'
     )
 
-#QUIZ CONTROLLERS
 @BOT.command(name='99', help='Responds with a random quote from Brooklyn 99')
 async def nine_nine(ctx):
     response = random.choice(quotelist.brooklyn_99_quotes)
@@ -49,25 +49,9 @@ async def avatar(ctx, member: discord.Member):
     show_avatar.set_image(url='{}'.format(member.avatar_url))
     await ctx.send(embed=show_avatar)
 
-@BOT.command(name='quiz', help='Starts a quiz about quotes.')
-async def quiz_me(ctx):
-    await quiz.quiz_me(BOT, ctx)
+#QUIZ CONTROLLERS
 
-@BOT.command(name='addquiz', help='can create quizes. Insert four util.StringStyle for the  fields:quote, said_by, where, genre: example: !addquiz "A quote from a film" "The name of the actor" "the name of the  film" "genre"... \n'+
-             'for multiple accepted answers you can write for said_by or where "dasBoot,das boot,das boots" These are then all accepted answers for the said_by field.')
-async def add_quiz(ctx, quote, said_by, where, genre):
-    await quiz.add_quiz(BOT, ctx, quote, said_by, where, genre)
-
-@BOT.command(name='delquiz', help='Delete quiz based on id')
-async def del_quiz(ctx, quiz_id):
-    await quiz.del_quiz(ctx, quiz_id)
-
-@BOT.command(name='score', help='Show scoreboard over quiz competitors')
-async def score(ctx):
-    await quiz.score(ctx)
-
-
-@BOT.command(name='countdown', help='Show scoreboard over quiz competitors')
+@BOT.command(name='countdown', help='Do a countdown')
 async def countdown(ctx, countdown):
     await util.timer(ctx, countdown)
 
