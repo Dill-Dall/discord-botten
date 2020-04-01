@@ -12,7 +12,7 @@ class StringStyle(enum.Enum):
     DIFF = "diff"
     NONE = ""
 
-def sWrap(string, stringStyle):
+def sWrap(string, stringStyle = StringStyle.NONE):
     return f""">>> ```{stringStyle.value}\n{string}```"""
 
 
@@ -25,6 +25,12 @@ def testContent(message, answer):
 def check(author):
     def inner_check(message):
         return message.author == author
+    return inner_check
+
+#Should be able to combine with check in a clean way
+def checkBot(author, bot):
+    def inner_check(message):
+        return message.author != bot
     return inner_check
 
 async def timer(ctx, countdown):

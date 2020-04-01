@@ -5,6 +5,7 @@ Module to handle stuff related to quiz
 import json
 import random
 import asyncio
+import time
 
 from discord.ext import commands
 
@@ -31,6 +32,18 @@ def add_point(name):
         SCORECARD.append(new_player)
         json.dump(SCORECARD, file, indent=4)
 
+async def getScore(ctx):
+    response = "################SCORECARD##############################\n#\n#\n"
+    leader = ""
+    leader_score = 0
+    for player in SCORECARD:
+        response += f'#     {player["name"]}: {player["score"]}\n'
+        if int(player["score"]) > leader_score:
+            leader = player["name"]
+            leader_score = int(player["score"])
+
+    await ctx.send(util.sWrap(f'{response}#\n#\n#   Guild quiz master is {leader}! with {leader_score} points! Cheers!\n#'
+                            + '\n########################################################', util.StringStyle.YELLOW))
 
 class Quiz(commands.Cog):
     def __init__(self, bot):
@@ -111,14 +124,70 @@ class Quiz(commands.Cog):
 
     @commands.command(name='score', help='Show scoreboard over quiz competitors')
     async def score(self, ctx):
-        response = "################SCORECARD##############################\n#\n#\n"
-        leader = ""
-        leader_score = 0
-        for player in SCORECARD:
-            response += f'#     {player["name"]}: {player["score"]}\n'
-            if int(player["score"]) > leader_score:
-                leader = player["name"]
-                leader_score = int(player["score"])
+        await getScore(ctx)
+    
+    @commands.command(name='startquiz_comp', help='Starts a quiz competition about quotes.')
+    async def startquiz_comp(self, ctx, nr_questions = 2, timer = 10):
+        for x in range(1, int(nr_questions)+1):
+            content =""
+            msg = ""
 
-        await ctx.send(util.sWrap(f'{response}#\n#\n#   Guild quiz master is {leader}! with {leader_score} points! Cheers!\n#'
-                                + '\n########################################################', util.StringStyle.YELLOW))
+            quote_object = random.choice(QUOTELIST)
+            if quote_object["said_by"] != "":
+                content =f'Question: {x} The quote: “{quote_object["quote"]}” (id: {quote_object["id"]})\nWas said by?'
+                msg = await ctx.send(util.sWrap(content +  "Timer: 10", util.StringStyle.DIFF))
+            
+                answer = False
+                timeout = time.time() + timer
+                while(not answer):
+                    try:
+                        reply = await self.bot.wait_for('message', check=util.checkBot(ctx.author, self.bot), timeout=1)
+                        answer = util.testContent(reply.content, quote_object['said_by'])
+                    except asyncio.TimeoutError:
+                        time_left = round(timeout-time.time())
+                        if time_left < 0: time_left = 0
+                    
+                        await msg.edit(content = util.sWrap(f'{content} Timer: {time_left}', util.StringStyle.CYAN))
+                        if time.time() > timeout:
+                            await ctx.send(util.sWrap(f'- You were too slow!', util.StringStyle.DIFF))
+                            time.sleep(2)
+                            break 
+
+                if(answer):
+                    add_point(ctx.author.name)
+                    await ctx.send(util.sWrap(reply.content+" is correctomundo!", util.StringStyle.YELLOW))
+                    time.sleep(2)
+            
+                content = f'The quote Was said in which {quote_object["genre"]}?'
+                msg = await ctx.send(util.sWrap(content, util.StringStyle.CYAN))
+            else:
+                content = f'The quote: “{quote_object["quote"]}” (id: {quote_object["id"]})\nWas said in which {quote_object["genre"]}?'
+                msg = await ctx.send(util.sWrap(content, util.StringStyle.CYAN))
+            
+            answer = False
+            timeout = time.time() + timer
+            while(not answer):
+                try:             
+                    reply = await self.bot.wait_for('message', check=util.checkBot(ctx.author, self.bot), timeout=1)
+                    answer = util.testContent(reply.content, quote_object['where'])
+                except asyncio.TimeoutError:
+                    time_left = round(timeout-time.time())
+                    if time_left < 0: time_left = 0
+                    await msg.edit(content = util.sWrap(f'{content} Timer: {time_left}', util.StringStyle.CYAN))
+                if time.time() > timeout:
+                    await ctx.send(util.sWrap(f'- You were too slow!', util.StringStyle.DIFF))
+                    break  
+
+            if(answer):
+                add_point(ctx.author.name)
+                await ctx.send(util.sWrap(reply.content+" is correctomundo!", util.StringStyle.YELLOW))
+                
+            time.sleep(1)
+            q_npc_string = quote_object["said_by"]
+            if q_npc_string != "":
+                q_npc_string = f'was said by accepted[{q_npc_string}] and'
+            content = f'{quote_object["quote"]} {q_npc_string} is from the {quote_object["genre"]} accepted[{quote_object["where"]}]'                
+            await ctx.send(util.sWrap(content, util.StringStyle.DIFF))
+            time.sleep(2)
+
+        await getScore(ctx)
