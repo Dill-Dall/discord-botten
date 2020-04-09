@@ -7,7 +7,6 @@ import random
 
 import discord
 from discord.ext import commands
-import youtube_dl
 from dotenv import load_dotenv
 
 import quiz
@@ -52,8 +51,6 @@ async def avatar(ctx, member: discord.Member):
     )
     show_avatar.set_image(url='{}'.format(member.avatar_url))
     await ctx.send(embed=show_avatar)
-
-#QUIZ CONTROLLERS
 
 @BOT.command(name='countdown', help='Do a countdown')
 async def countdown(ctx, countdown):
